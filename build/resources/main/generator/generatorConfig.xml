@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="context1">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.100:3306/suddenstrike_cross_db" userId="root"
+                        password="123456"/>
+        <javaModelGenerator targetPackage="com.pkuvr.game_server.domain" targetProject="SuddenStrikeCrossServer/src"/>
+        <sqlMapGenerator targetPackage="com.pkuvr.game_server.dao" targetProject="SuddenStrikeCrossServer/resources"/>
+        <javaClientGenerator targetPackage="com.pkuvr.game_server.dao" targetProject="SuddenStrikeCrossServer/src"
+                             type="XMLMAPPER"/>
+
+        <table schema="" tableName="PlayerRole"/>
+        <table schema="" tableName="PlayerCrossMineInfo"/>
+        <!--
+          <table schema="" tableName="DefenseZoneBattleLog" />
+        <table schema="" tableName="DicHonorReward" />
+        <table schema="" tableName="DicMineBuilding" />
+        <table schema="" tableName="DicResMineRela" />
+        <table schema="" tableName="DicResourceMine" />
+        <table schema="" tableName="DicResourceMineType" />
+        <table schema="" tableName="DicUnlockResourceMine" />
+        <table schema="" tableName="MineAttackHistory" />
+        <table schema="" tableName="MineRefreshRecord" />
+        <table schema="" tableName="NPCResourceMine" />
+         <table schema="" tableName="PlayerRole" />
+        <table schema="" tableName="PlayerDefenseZone" />
+        <table schema="" tableName="PlayerFriends" />
+        <table schema="" tableName="PlayerFriendsApply" />
+        <table schema="" tableName="PlayerMineLeftResource" />
+        <table schema="" tableName="PlayerResourceMine" />
+        <table schema="" tableName="PlayerResourceMineCollect" />
+        <table schema="" tableName="PlayerZonePlunder" />
+        <table schema="" tableName="RealTimePvpNpcHistory" />
+        <table schema="" tableName="RealTimePvpPlayerHistory" />
+        <table schema="" tableName="RealTimePvpTokenHistory" />
+        <table schema="" tableName="RefreshResourceMine" />
+        <table schema="" tableName="ResourceMineBattleLog" />
+        <table schema="" tableName="ResourceMineCollectLog" />
+        PlayerProtectionBuff
+         -->
+    </context>
+</generatorConfiguration>

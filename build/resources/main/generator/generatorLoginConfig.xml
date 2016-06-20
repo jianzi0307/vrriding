@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="context1">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.100:3306/suddenstrike_login_db" userId="root"
+                        password="123456"/>
+        <javaModelGenerator targetPackage="com.pkuvr.login_server.domain" targetProject="SuddenStrikeGameServerCn/src"/>
+        <sqlMapGenerator targetPackage="com.pkuvr.login_server.dao" targetProject="SuddenStrikeGameServerCn/resources"/>
+        <javaClientGenerator targetPackage="com.pkuvr.login_server.dao" targetProject="SuddenStrikeGameServerCn/src"
+                             type="XMLMAPPER"/>
+        <table schema="" tableName="Announcement"/>
+        <!-- <table schema="" tableName="Player_Login_Logs" />
+        <table schema="" tableName="Player" />
+        <table schema="" tableName="Player_Feedback" />
+        <table schema="" tableName="City_Location" />
+        <table schema="" tableName="IP_Location" /> -->
+    </context>
+</generatorConfiguration>

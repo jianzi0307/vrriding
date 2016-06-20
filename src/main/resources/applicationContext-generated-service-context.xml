@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName" default-lazy-init="true">
+
+    <!-- ******************************************************************** -->
+    <!-- This context file was generated and is not intended to be changed manually. -->
+    <!-- ******************************************************************** -->
+    <!-- 几乎每个项目都会用到的json解析 -->
+    <bean id="jacksonObjectMapper" class="org.codehaus.jackson.map.ObjectMapper" scope="singleton"/>
+
+</beans>

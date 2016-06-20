@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName" default-lazy-init="true">
+
+    <!-- 商务逻辑处理BEAN,在类里加上 @Service("ApkInfoService") 的声明  -->
+    <!-- <context:component-scan base-package="com.gfan.gameserver.redis" />  -->
+
+    <!-- redis的DAO。 -->
+    <bean id="sessionKeyHMapCpt" class="com.pkuvr.game_server.redis.SessionKeyHMapCpt" scope="singleton">
+        <property name="explain" value="SessionKey"/> <!-- 用途说明,注意这个是连接的登陆服务器,和后面的服务器不一致的 -->
+        <property name="dbId" value="#{jdbcConfig['jedisLogin.dbId']}"/> <!-- 使用的数据库id -->
+        <property name="key" value="SessionKey"/> <!-- 列的Key -->
+    </bean>
+
+    <!-- redis的DAO。 -->
+    <bean id="playerResourceMineHMapCpt" class="com.pkuvr.game_server.redis.PlayerResourceMineHMapCpt" scope="singleton">
+        <property name="explain" value="玩家占领的资源点列表"/>
+        <property name="dbId" value="#{jdbcConfig['jedisLogin.dbId']}"/> <!-- 使用的数据库id -->
+        <property name="key" value="PlayerResMine"/> <!-- 列的Key -->
+    </bean>
+
+    <bean id="pvpRoomZSetCpt" class="com.pkuvr.game_server.redis.BaseZSetCpt" scope="singleton">
+        <property name="explain" value="PVP 房间排名列表"/> <!-- 用途说明 -->
+        <property name="dbId" value="#{jdbcConfig['jedisLogin.dbId']}"/> <!-- 使用的数据库id -->
+        <property name="key" value="PvpRoomSet"/> <!-- 列的Key -->
+    </bean>
+
+
+    <bean id="pvpMatchZSetCpt" class="com.pkuvr.game_server.redis.BaseZSetCpt" scope="singleton">
+        <property name="explain" value="PVP 实时匹配列表"/> <!-- 用途说明 -->
+        <property name="dbId" value="#{jdbcConfig['jedisLogin.dbId']}"/> <!-- 使用的数据库id -->
+        <property name="key" value="PvpMatchSet"/> <!-- 列的Key -->
+    </bean>
+
+    <bean id="gradeRankingZSetCpt" class="com.pkuvr.game_server.redis.BaseZSetCpt" scope="singleton">
+        <property name="explain" value="战斗力排行榜"/> <!-- 用途说明 -->
+        <property name="dbId" value="#{jdbcConfig['jedisLogin.dbId']}"/> <!-- 使用的数据库id -->
+        <property name="key" value="gradeRankingSet"/> <!-- 列的Key -->
+    </bean>
+
+
+    <!-- 配置redis数据源 -->
+    <bean id="jedisPoolConfigLogin" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxActive" value="#{jdbcConfig['jedisLogin.maxActive']}"/>
+        <property name="maxIdle" value="#{jdbcConfig['jedisLogin.maxIdle']}"/>
+        <property name="maxWait" value="#{jdbcConfig['jedisLogin.maxWait']}"/>
+        <property name="testOnBorrow" value="#{jdbcConfig['jedisLogin.testOnBorrow']}"/>
+    </bean>
+
+    <!-- redis连接池。 -->
+    <bean id="jedisPoolLogin" class="redis.clients.jedis.JedisPool">
+        <constructor-arg index="0" ref="jedisPoolConfigLogin"/>
+        <constructor-arg index="1" value="#{jdbcConfig['jedisLogin.host']}"/>
+        <constructor-arg index="2" value="#{jdbcConfig['jedisLogin.port']}"/>
+        <constructor-arg index="3" value="#{jdbcConfig['jedisLogin.timeout']}"/>
+        <constructor-arg index="4" value="#{jdbcConfig['jedisLogin.password']}"/>
+    </bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

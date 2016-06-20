@@ -1,0 +1,20 @@
+package com.pkuvr.game_server.network.clientpackets;
+
+import com.pkuvr.commons.network.webcore.State;
+import com.pkuvr.game_server.constant.CmOpCode;
+import com.pkuvr.game_server.main.GetBeanHelper;
+import com.pkuvr.game_server.network.CmComponent;
+import com.pkuvr.game_server.network.serverpackets.SM_MINE_UNLOCK_REFRESH;
+import org.springframework.context.annotation.Scope;
+
+@Scope("prototype")
+@CmComponent(opCode = CmOpCode.MINE_UNLOCK_REFRESH_REQ, state = State.AUTHED)
+public class CM_MINE_UNLOCK_REFRESH extends AbstractCM {
+    @Override
+    protected void runImpl() {
+        int roleId = getRoleId();
+
+        byte[] prr = GetBeanHelper.getMineControl().mineUnlockRefresh(roleId, byteData);
+        super.sendPacket(new SM_MINE_UNLOCK_REFRESH(prr));
+    }
+}

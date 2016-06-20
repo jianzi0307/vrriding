@@ -1,0 +1,73 @@
+# sets the default aux value for any non configured caches
+jcs.default=
+jcs.default.cacheattributes= org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=10000
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+
+# CACHE REGIONS AVAILABLE
+# Regions preconfigured for caching
+
+# 玩家的基本信息,大量长时间缓存 (主键:玩家id,200万)
+jcs.region.playerRoleCache=
+jcs.region.playerRoleCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.playerRoleCache.cacheattributes.MaxObjects=2000000
+jcs.region.playerRoleCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.playerRoleCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.playerRoleCache.cacheattributes.MaxMemoryIdleTimeSeconds=3600
+jcs.region.playerRoleCache.cacheattributes.ShrinkerIntervalSeconds=1200
+
+# 缓存玩家buffer信息 (主键:玩家id,200万)
+jcs.region.playerBufferCache=
+jcs.region.playerBufferCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.playerBufferCache.cacheattributes.MaxObjects=2000000
+jcs.region.playerBufferCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.playerBufferCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.playerBufferCache.cacheattributes.MaxMemoryIdleTimeSeconds=3600
+jcs.region.playerBufferCache.cacheattributes.ShrinkerIntervalSeconds=1200
+
+# 缓存玩家的实时pvp信息
+jcs.region.playerRealtimePvpCache=
+jcs.region.playerRealtimePvpCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.playerRealtimePvpCache.cacheattributes.MaxObjects=100000
+jcs.region.playerRealtimePvpCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.playerRealtimePvpCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.playerRealtimePvpCache.cacheattributes.MaxMemoryIdleTimeSeconds=240
+jcs.region.playerRealtimePvpCache.cacheattributes.ShrinkerIntervalSeconds=60
+
+# 缓存玩家资源岛被攻击信息
+jcs.region.playerMineAttackedCache=
+jcs.region.playerMineAttackedCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.playerMineAttackedCache.cacheattributes.MaxObjects=100000
+jcs.region.playerMineAttackedCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.playerMineAttackedCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.playerMineAttackedCache.cacheattributes.MaxMemoryIdleTimeSeconds=180
+jcs.region.playerMineAttackedCache.cacheattributes.ShrinkerIntervalSeconds=60
+
+# 缓存特定资源岛被攻击信息
+jcs.region.playerMineInstanceAttackedCache=
+jcs.region.playerMineInstanceAttackedCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.playerMineInstanceAttackedCache.cacheattributes.MaxObjects=100000
+jcs.region.playerMineInstanceAttackedCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.playerMineInstanceAttackedCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.playerMineInstanceAttackedCache.cacheattributes.MaxMemoryIdleTimeSeconds=180
+jcs.region.playerMineInstanceAttackedCache.cacheattributes.ShrinkerIntervalSeconds=60
+
+# 缓存资源岛玩家攻击关系
+jcs.region.ownPlayerMineAttackedCache=
+jcs.region.ownPlayerMineAttackedCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.ownPlayerMineAttackedCache.cacheattributes.MaxObjects=100000
+jcs.region.ownPlayerMineAttackedCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.ownPlayerMineAttackedCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.ownPlayerMineAttackedCache.cacheattributes.MaxMemoryIdleTimeSeconds=180
+jcs.region.ownPlayerMineAttackedCache.cacheattributes.ShrinkerIntervalSeconds=60
+
+# 缓存玩家防区攻击
+jcs.region.playerZoneAttackedCache=
+jcs.region.playerZoneAttackedCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.playerZoneAttackedCache.cacheattributes.MaxObjects=100000
+jcs.region.playerZoneAttackedCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.playerZoneAttackedCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.playerZoneAttackedCache.cacheattributes.MaxMemoryIdleTimeSeconds=180
+jcs.region.playerZoneAttackedCache.cacheattributes.ShrinkerIntervalSeconds=60
+
+
