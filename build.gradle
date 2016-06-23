@@ -71,6 +71,7 @@ def getDbProperties = {
     properties;
 }
 
+// gradle mybatisGenerate --info
 task mybatisGenerate << {
     def properties = getDbProperties()
     ant.properties['targetProject'] = projectDir.path
@@ -101,7 +102,6 @@ task mybatisGenerate << {
             propertyref(name: 'modelPackage')
             propertyref(name: 'mapperPackage')
             propertyref(name: 'sqlMapperPackage')
-
         }
     }
 }
