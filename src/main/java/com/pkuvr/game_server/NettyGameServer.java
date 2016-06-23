@@ -28,7 +28,7 @@ public class NettyGameServer extends AbstractNettyServer {
     public void initialize() {
         clientToGameChannelFactory = initServerChannelFactory();
         channelGroup.add(initServerChannel(clientToGameChannelFactory, new InetSocketAddress(gameSocketPort), gameServerPipeLineFactory));
-        logger.info("Game Server started");
+        logger.info("Game Server started! port: " + gameSocketPort);
     }
 
     @Override

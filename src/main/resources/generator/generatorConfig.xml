@@ -3,16 +3,12 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <context id="context1">
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.1.100:3306/suddenstrike_cross_db" userId="root"
-                        password="123456"/>
-        <javaModelGenerator targetPackage="com.pkuvr.game_server.domain" targetProject="SuddenStrikeCrossServer/src"/>
-        <sqlMapGenerator targetPackage="com.pkuvr.game_server.dao" targetProject="SuddenStrikeCrossServer/resources"/>
-        <javaClientGenerator targetPackage="com.pkuvr.game_server.dao" targetProject="SuddenStrikeCrossServer/src"
-                             type="XMLMAPPER"/>
+        <jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${userId}" password="${password}"/>
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${src_main_java}"/>
+        <sqlMapGenerator targetPackage="${sqlMapperPackage}" targetProject="${src_main_resources}"/>
+        <javaClientGenerator targetPackage="${mapperPackage}" targetProject="${src_main_java}" type="XMLMAPPER"/>
 
-        <table schema="" tableName="PlayerRole"/>
-        <table schema="" tableName="PlayerCrossMineInfo"/>
+        <table tableName="%" />
         <!--
           <table schema="" tableName="DefenseZoneBattleLog" />
         <table schema="" tableName="DicHonorReward" />

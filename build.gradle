@@ -15,7 +15,15 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    mybatisGenerator
+}
+
 dependencies {
+    mybatisGenerator 'org.mybatis.generator:mybatis-generator-core:1.3.2'
+    mybatisGenerator 'mysql:mysql-connector-java:5.1.17'
+    mybatisGenerator 'tk.mybatis:mapper:3.3.2'
+
     compile group: 'asm', name: 'asm', version: '3.3.1'
     compile group: 'com.jolbox', name: 'bonecp', version: '0.7.1.RELEASE'
     compile group: 'cglib', name: 'cglib', version: '2.2.2'
@@ -53,6 +61,49 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-jdbc', version: '3.0.6.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version: '3.0.6.RELEASE'
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+def getDbProperties = {
+    def properties = new Properties()
+    file("src/main/resources/jdbc-test.properties").withInputStream { inputStream ->
+        properties.load(inputStream)
+    }
+    properties;
+}
+
+task mybatisGenerate << {
+    def properties = getDbProperties()
+    ant.properties['targetProject'] = projectDir.path
+    ant.properties['driverClass'] = properties.getProperty("jdbc.driverClass")
+    ant.properties['connectionURL'] = properties.getProperty("jdbc.url")
+    ant.properties['userId'] = properties.getProperty("jdbc.user")
+    ant.properties['password'] = properties.getProperty("jdbc.password")
+    ant.properties['src_main_java'] = sourceSets.main.java.srcDirs[0].path
+    ant.properties['src_main_resources'] = sourceSets.main.resources.srcDirs[0].path
+    ant.properties['modelPackage'] = this.modelPackage
+    ant.properties['mapperPackage'] = this.mapperPackage
+    ant.properties['sqlMapperPackage'] = this.sqlMapperPackage
+    ant.taskdef(
+            name: 'mbgenerator',
+            classname: 'org.mybatis.generator.ant.GeneratorAntTask',
+            classpath: configurations.mybatisGenerator.asPath
+    )
+    ant.mbgenerator(overwrite: true,
+            configfile: 'src/main/resources/generator/generatorConfig.xml', verbose: true) {
+        propertyset {
+            propertyref(name: 'targetProject')
+            propertyref(name: 'driverClass')
+            propertyref(name: 'connectionURL')
+            propertyref(name: 'userId')
+            propertyref(name: 'password')
+            propertyref(name: 'src_main_java')
+            propertyref(name: 'src_main_resources')
+            propertyref(name: 'modelPackage')
+            propertyref(name: 'mapperPackage')
+            propertyref(name: 'sqlMapperPackage')
+
+        }
+    }
 }
 
 jar {

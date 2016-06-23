@@ -36,6 +36,7 @@
         <property name="configLocation" value="classpath:mybatisLogin-config.xml"/>
         <property name="mapperLocations" value="classpath:/com/pkuvr/login_server/dao/*.xml"/>
     </bean>
+
     <bean id="sqlSessionFactoryManage" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSourceManage"/>
         <property name="configLocation" value="classpath:mybatisManage-config.xml"/>
