@@ -42,14 +42,17 @@ public class GameServerPacketHandlerFactory extends AbstractPacketHandlerFactory
 //				}
 //			}
 //		}
+        //扫描接收处理包
         ScanPackage cms = GetBeanHelper.getCms();
         Set<Class<?>> cmsClasses = cms.getClasses();
+        logger.info("扫描接收处理包=====>" + cmsClasses);
         for (Class<?> cmsClass : cmsClasses) {
             try {
                 CmComponent cmComponent = (CmComponent) cmsClass.getAnnotation(CmComponent.class);
                 if (cmComponent == null)
                     continue;
 
+                //绑定opcode与handler
                 AbstractClientPacket<GameServerChannelHandler> cm = (AbstractClientPacket<GameServerChannelHandler>) GetBeanHelper.getBean(cmsClass);
                 cm.setOpCode(cmComponent.opCode().getOpCode());
 
@@ -59,9 +62,11 @@ public class GameServerPacketHandlerFactory extends AbstractPacketHandlerFactory
             }
         }
 
+        //扫描发送包
         // 2.绑定响应类和opCode
         ScanPackage sms = GetBeanHelper.getSms();
         Set<Class<?>> smsClasses = sms.getClasses();
+        logger.info("扫描发送包====>" + smsClasses);
         for (Class<?> smsClass : smsClasses) {
             try {
                 SmVO smVO = (SmVO) smsClass.getAnnotation(SmVO.class);

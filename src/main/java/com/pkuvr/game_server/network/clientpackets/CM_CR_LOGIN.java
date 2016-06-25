@@ -24,7 +24,7 @@ public class CM_CR_LOGIN extends AbstractCM {
             // 请求参数
             CR_Login_Req req = CR_Login_Req.parseFrom(byteData);
             int serverId = req.getServerId();
-
+            logger.info(serverId + "<--------------------------------------------serverId");
             // Channel 的基本属性,同时变更状态为验证过
             cch.setRoleId(serverId); // 该 channel 对应的 roleId
             cch.setState(State.AUTHED);

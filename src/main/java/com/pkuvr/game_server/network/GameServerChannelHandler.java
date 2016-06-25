@@ -3,9 +3,6 @@ package com.pkuvr.game_server.network;
 import com.pkuvr.commons.network.netty.handler.AbstractChannelHandler;
 import com.pkuvr.commons.network.netty.handler.AbstractPacketHandlerFactory;
 import com.pkuvr.commons.rc4.PacketCrypt;
-import com.pkuvr.game_server.main.GetBeanHelper;
-import com.pkuvr.game_server.service.MineService;
-import com.pkuvr.game_server.service.RealTimePvpService;
 import org.apache.log4j.Logger;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
@@ -66,11 +63,11 @@ public class GameServerChannelHandler extends AbstractChannelHandler {
     private void addLogoutLog(int roleId) {
         try {
 
-            RealTimePvpService realTimePvpService = GetBeanHelper.getRealTimePvpService();
-            realTimePvpService.pvpDisconnect(roleId);
-
-            MineService mineService = GetBeanHelper.getMineService();
-            mineService.playerExitMine(roleId);
+//            RealTimePvpService realTimePvpService = GetBeanHelper.getRealTimePvpService();
+//            realTimePvpService.pvpDisconnect(roleId);
+//
+//            MineService mineService = GetBeanHelper.getMineService();
+//            mineService.playerExitMine(roleId);
         } catch (Exception e) {
             log.error("addLogoutLog:", e);
         }
