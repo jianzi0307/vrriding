@@ -19,12 +19,11 @@ import java.util.Set;
 @Component
 public class PlayerRoleCacheManager implements ICacheManager<Integer, PlayerRoleVO> {
     @Resource
-    private JCSCache<Integer, PlayerRoleVO> playerRoleCache;
-    @Resource
     private PlayerroleMapper playerRoleMapper;
     @Resource
     private ObjectMapper jacksonObjectMapper;
-
+    @Resource
+    private JCSCache<Integer, PlayerRoleVO> playerRoleCache;
     /**
      * 主键为:roleId , 如果不存在,返回空
      */

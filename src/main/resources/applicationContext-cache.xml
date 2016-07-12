@@ -18,6 +18,7 @@
         <constructor-arg index="0" value="playerRoleCache"/>
     </bean>
 
+    <!--
     <bean id="playerBufferCache" class="com.pkuvr.game_server.cache.JCSCache">
         <constructor-arg index="0" value="playerBufferCache"/>
     </bean>
@@ -40,5 +41,5 @@
 
     <bean id="playerZoneAttackedCache" class="com.pkuvr.game_server.cache.JCSCache">
         <constructor-arg index="0" value="playerZoneAttackedCache"/>
-    </bean>
+    </bean>-->
 </beans>

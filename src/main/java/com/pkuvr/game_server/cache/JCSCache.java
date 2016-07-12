@@ -10,9 +10,8 @@ import java.util.Set;
 
 /**
  * 为了使用泛型,而在 JCS.getInstance( regionName ) 外面包了一层应用
- *
- * @param <T>
- * @author SHACS
+ * @param <K>
+ * @param <V>
  */
 public class JCSCache<K, V> {
     private static final Logger log = LoggerFactory.getLogger(JCSCache.class);

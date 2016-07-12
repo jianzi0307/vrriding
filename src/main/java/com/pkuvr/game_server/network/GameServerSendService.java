@@ -174,6 +174,11 @@ public class GameServerSendService {
         return roleIdToChannelMap.size();
     }
 
+    /**
+     * 是否需要加密
+     * @param clientId
+     * @param buf
+     */
     public void encryptIfNeed(int clientId, ChannelBuffer buf) {
         Integer roleId = clientIdToRoleIdMap.get(clientId);
         if (roleId == null)
@@ -218,6 +223,11 @@ public class GameServerSendService {
         }
     }
 
+    /**
+     * 是否需要解密
+     * @param clientId
+     * @param buf
+     */
     public void decryptIfNeed(int clientId, ChannelBuffer buf) {
         if (clientIdToRoleIdMap.get(clientId) == null)
             return;
@@ -248,6 +258,11 @@ public class GameServerSendService {
         }
     }
 
+    /**
+     * 是否需要解密
+     * @param clientId
+     * @param bytes
+     */
     public void decryptBytesIfNeed(int clientId, byte[] bytes) {
         if (clientIdToRoleIdMap.get(clientId) == null)
             return;
